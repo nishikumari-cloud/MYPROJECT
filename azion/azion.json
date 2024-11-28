@@ -1,0 +1,42 @@
+{
+  "name": "MYPROJECT",
+  "bucket": "",
+  "preset": "javascript",
+  "env": "production",
+  "prefix": "20241128131035",
+  "not-first-run": true,
+  "function": {
+    "id": 32917,
+    "name": "__DEFAULT__",
+    "file": ".edge/worker.js",
+    "args": "azion/args.json",
+    "instance-id": 31661,
+    "instance-name": "__DEFAULT__",
+    "cache-id": 190657
+  },
+  "application": {
+    "id": 1732790630,
+    "name": "__DEFAULT__"
+  },
+  "domain": {
+    "id": 1732796452,
+    "name": "MYPROJECT",
+    "domain_name": "wr24ew8ipl.map.azionedge.net",
+    "url": "https://wr24ew8ipl.map.azionedge.net"
+  },
+  "rt-purge": {
+    "purge_on_publish": true
+  },
+  "origin": [],
+  "rules-engine": {
+    "created": false,
+    "rules": [
+      {
+        "id": 327564,
+        "name": "Execute Edge Function",
+        "phase": "request"
+      }
+    ]
+  },
+  "cache-settings": []
+}
