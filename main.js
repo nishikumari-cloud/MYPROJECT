@@ -21,21 +21,200 @@ function main(event) {
    
   return new Response(`
     <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Hello World</title>
-      <script>
-        ${htmx}
-      </script>
-    </head>
-    <body>
-      <h1>Hello World</h1>
-      <button hx-get="/messages" hx-target="#message">Load Message</button>
-      <p id="message"></p>
-    </body>
-    </html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Web Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: #121212; /* Black background */
+            color: #ffffff; /* White text */
+        }
+
+        h1 {
+            font-size: 4rem; /* Larger font size */
+            text-align: center;
+            padding: 40px 0;
+            color: #2ecc71; /* Vibrant green for contrast */
+            animation: fadeIn 2s ease-in-out; /* Fade-in animation */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header Section */
+        header {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            z-index: 99;
+            width: 100%;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            animation: slideIn 1s ease-out;
+        }
+
+        .logo {
+            font-size: 3rem; /* Larger font size */
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #2ecc71; /* Vibrant green */
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #ffffff; /* White text */
+            font-size: 1.4rem; /* Larger font size */
+            padding: 15px;
+            margin: 0 15px;
+            text-transform: uppercase;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #2ecc71;
+            transform: scale(1.1);
+        }
+
+        .icons i {
+            margin: 0 10px;
+            font-size: 2rem; /* Larger icon size */
+            color: #ffffff; /* White */
+            padding: 10px;
+            border-radius: 50%;
+            border: 1px solid #555; /* Subtle border */
+            transition: background 0.3s, color 0.3s, transform 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .icons i:hover {
+            background: #2ecc71;
+            color: black;
+            transform: rotate(20deg);
+        }
+
+        /* Sofa Image Styling */
+        #sofa {
+            width: 100%;
+            max-height: 800px;
+            object-fit: cover;
+            margin-top: 20px;
+            filter: brightness(90%); /* Slightly dim to blend with the dark theme */
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .menu {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start;
+            }
+
+            .menu a {
+                font-size: 1.2rem; /* Adjusted for smaller screens */
+                padding: 10px;
+                width: 100%;
+                text-align: left;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                Inte<span>rior-X</span>
+            </div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Service</a>
+            </div>
+            <div class="icons">
+                <i class="fa fa-search" aria-label="Search"></i>
+                <i class="fa fa-bell" aria-label="Notifications"></i>
+            </div>
+        </nav>
+        <img src="https://images.unsplash.com/photo-1616593918824-4fef16054381?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG91c2UlMjBpbnRlcmlvcnxlbnwwfHwwfHx8MA%3D%3D" id="sofa" alt="Modern interior design sofa">
+    </header>
+
+    <h1>Interior Design</h1>
+
+</body>
+
+</html>
   `, {
     headers: {
       'Content-Type': 'text/html; charset=utf-8'
